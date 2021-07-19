@@ -1,8 +1,10 @@
 require('dotenv').config()
-const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
-const mongoose = require('mongoose');
+import Koa from 'koa';
+import Router from 'koa-router';
+import bodyParser from 'koa-bodyparser';
+import mongoose from 'mongoose';
+import api from './api';
+import createFakeData from './createFakeData';
 
 const { PORT, MONGO_URI } = process.env;
 
@@ -14,7 +16,6 @@ mongoose
         console.error(e);
     })
 
-const api = require('./api');
 
 const app = new Koa();
 const router = new Router();
