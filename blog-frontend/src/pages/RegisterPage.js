@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import AuthForm from '../components/auth/AuthForm';
+import AuthTemplate from '../components/auth/AuthTemplate';
+import RegisterForm from '../containers/auth/RegisterForm';
 
 function RegisterPage() {
-    return (
-        <div>
-            회원가입
-        </div>
-    )
+  return (
+    <div>
+      <AuthTemplate>
+        <RegisterForm />
+      </AuthTemplate>
+    </div>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;
