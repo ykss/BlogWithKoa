@@ -49,7 +49,14 @@ const textMap = {
   register: '회원가입',
 };
 
-function AuthForm({ type, form, onChange, onSubmit }) {
+const ErrorMessage = styled.div`
+  color: red;
+  text-align: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+`;
+
+function AuthForm({ type, form, onChange, onSubmit, error }) {
   const text = textMap[type];
   return (
     <AuthFormBlock>
@@ -80,6 +87,7 @@ function AuthForm({ type, form, onChange, onSubmit }) {
             value={form.passwordConfirm}
           />
         )}
+        {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWithMarginTop fullWidth cyan>
           {text}
         </ButtonWithMarginTop>

@@ -1,12 +1,13 @@
-import React from 'react'
-import Button from '../components/common/Button'
+import React from 'react';
+import HeaderContainer from '../containers/common/HeaderContainer';
 
 function PostListPage() {
-    return (
-        <div>
-            <Button>버튼</Button>
-        </div>
-    )
+  return (
+    <div>
+      <HeaderContainer />
+      <div>홈페이지</div>
+    </div>
+  );
 }
 
-export default PostListPage
+export default PostListPage;
