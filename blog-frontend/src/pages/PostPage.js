@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+import HeaderContainer from '../containers/common/HeaderContainer';
+import PostViewerContainer from '../containers/post/PostViewerContainer';
 
 function PostPage() {
-    return (
-        <div>
-            포스트
-        </div>
-    )
+  return (
+    <>
+      <HeaderContainer />
+      <PostViewerContainer />
+    </>
+  );
 }
 
-export default PostPage
+export default PostPage;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import WriteActionButtons from '../../components/write/WriteActionButtons';
 import { writePost } from '../../modules/write';
 
@@ -40,4 +41,4 @@ function WriteActionButtonsContainer({ history }) {
   return <WriteActionButtons onPublish={onPublish} onCancel={onCancel} />;
 }
 
-export default WriteActionButtonsContainer;
+export default withRouter(WriteActionButtonsContainer);

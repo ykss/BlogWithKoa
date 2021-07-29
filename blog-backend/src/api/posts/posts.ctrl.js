@@ -4,15 +4,6 @@ import Joi from '@hapi/joi';
 
 const { ObjectId } = mongoose.Types;
 
-export const checkObjectId = (ctx, next) => {
-  const { id } = ctx.params;
-  if (!ObjectId.isValid(id)) {
-    ctx.status = 400;
-    return;
-  }
-  return next();
-};
-
 export const write = async (ctx) => {
   const schema = Joi.object().keys({
     title: Joi.string().required(),
@@ -31,7 +22,7 @@ export const write = async (ctx) => {
     title,
     body,
     tags,
-    user:ctx.state.user,
+    user: ctx.state.user,
   });
   try {
     await post.save();
@@ -53,8 +44,8 @@ export const list = async (ctx) => {
 
   const query = {
     ...(username ? { 'user.username': username } : {}),
-    ...(tag ? {tags:tag}:{}),
-  }
+    ...(tag ? { tags: tag } : {}),
+  };
 
   try {
     const posts = await Post.find(query)
@@ -65,11 +56,11 @@ export const list = async (ctx) => {
       .exec();
     const postCount = await Post.countDocuments(query).exec();
     ctx.set('Last-Page', Math.ceil(postCount / 10));
-    ctx.body = posts.map(post => ({
-        ...post,
-        body:
-          post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`
-      }));
+    ctx.body = posts.map((post) => ({
+      ...post,
+      body:
+        post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
+    }));
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -133,7 +124,7 @@ export const getPostById = async (ctx, next) => {
   } catch (e) {
     ctx.throw(500, e);
   }
-}
+};
 
 export const checkOwnPost = (ctx, next) => {
   const { user, post } = ctx.state;
@@ -142,4 +133,4 @@ export const checkOwnPost = (ctx, next) => {
     return;
   }
   return next();
-}
+};
