@@ -45,7 +45,7 @@ function PostActionButtons({ onEdit, onRemove }) {
     <>
       <PostActionButtonsBlock>
         <ActionButton onClick={onEdit}>수정</ActionButton>
-        <ActionButton onClick={onRemove}>삭제</ActionButton>
+        <ActionButton onClick={onRemoveClick}>삭제</ActionButton>
       </PostActionButtonsBlock>
       <AskRemoveModal
         visible={modal}

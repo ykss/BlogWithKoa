@@ -12,12 +12,14 @@ import { setOriginalPost } from '../../modules/write';
 function PostViewerContainer({ match, history }) {
   const { postId } = match.params;
   const dispatch = useDispatch();
-  const { post, error, loading } = useSelector(({ post, loading, user }) => ({
-    post: post.post,
-    error: post.error,
-    loading: loading['post/REAE_POST'],
-    user: user.user,
-  }));
+  const { post, error, loading, user } = useSelector(
+    ({ post, loading, user }) => ({
+      post: post.post,
+      error: post.error,
+      loading: loading['post/REAE_POST'],
+      user: user.user,
+    }),
+  );
 
   useEffect(() => {
     dispatch(readPost(postId));
