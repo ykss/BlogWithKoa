@@ -6,6 +6,8 @@ import Tags from '../common/Tags';
 
 const PostViewerBlock = styled.div`
   margin-top: 4rem;
+  margin-left: 150px;
+  margin-right: 150px;
 `;
 
 const PostHead = styled.div`
@@ -24,7 +26,7 @@ const PostContent = styled.div`
   color: ${palette.gray[8]};
 `;
 
-function PostViewer({ post, error, loading }) {
+function PostViewer({ post, error, loading, actionButtons }) {
   if (error) {
     if (error.response && error.response.status === 404) {
       return <PostViewerBlock>존재하지 않는 포스트입니다.</PostViewerBlock>;
@@ -48,6 +50,7 @@ function PostViewer({ post, error, loading }) {
         />
         <Tags tags={tags} />
       </PostHead>
+      {actionButtons}
       <PostContent dangerouslySetInnerHTML={{ __html: body }} />
     </PostViewerBlock>
   );
